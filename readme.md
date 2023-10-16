@@ -23,6 +23,17 @@ sudo systemctl daemon-reload
 systemctl --user daemon-reload
 ```
 
+## Enable services
+
+```sh
+sudo systemctl enable autologin.service
+sudo systemctl enable xorg.service
+
+systemctl --user enable icewm.service
+systemctl --user enable rox.service
+systemctl --user enable xrdb.service
+```
+
 # Description
 
 ## System
