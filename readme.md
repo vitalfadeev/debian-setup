@@ -1,6 +1,6 @@
-System configs in `src/etc`.
+System configs in `src/etc`. Put it to `/etc'
 
-User configs in `src/home/1000`.
+User configs in `src/home/1000`. Put it to home folder.
 
 # System
 
