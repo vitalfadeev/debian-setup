@@ -1,3 +1,7 @@
+System configs in `src/etc`.
+
+User configs in `src/home/1000`.
+
 # System
 
 ## Auto login
