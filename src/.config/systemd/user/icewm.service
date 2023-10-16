@@ -1,0 +1,12 @@
+[Unit]
+Description=IceWm
+After=xorg.service autologin.service
+
+[Service]
+ExecStart=/usr/bin/icewm-session  --nobg --notray
+Slice=session.slice
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

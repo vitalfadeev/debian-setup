@@ -1,0 +1,13 @@
+[Unit]
+Description=ROX desktop
+After=xorg.service autologin.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/rox -p Desktop
+Slice=session.slice
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
