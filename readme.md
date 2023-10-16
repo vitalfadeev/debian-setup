@@ -27,8 +27,8 @@ ExecStart=/usr/bin/systemctl start user@1000.service
 
 (can to replace 1000 to custom uid)
 
-*uid* can be seen:
-```sh
+_uid_ can be seen by command:
+```bash
 id
 ```
 
