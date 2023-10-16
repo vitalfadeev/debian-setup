@@ -1,5 +1,9 @@
+## Auto login
 
-```cat /etc/systemd/system/autologin.service```
+Auto login for user with uid 1000 
+(in Debian 12 first created user has uid 1000)
+
+/etc/systemd/system/autologin.service:
 
 ```ini
 [Unit]
@@ -14,3 +18,17 @@ RestartSec=10
 [Install]
 WantedBy=graphical.target
 ```
+
+Main line is:
+
+```ini
+ExecStart=/usr/bin/systemctl start user@1000.service
+```
+
+(can to replace 1000 to custom uid)
+
+*uid* can be seen:
+```sh
+id
+```
+
