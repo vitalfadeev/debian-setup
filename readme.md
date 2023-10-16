@@ -64,6 +64,13 @@ WantedBy=graphical.target
 Alias=display-manager.service
 ```
 
+/etc/X11/Xwrapper.config:
+
+```ini
+allowed_users=anybody
+needs_root_rights=yes
+```
+
 ```bash
 systemctl enable xorg.service
 ```
