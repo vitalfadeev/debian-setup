@@ -1,7 +1,7 @@
 # About
 
 This is systemd configs for able:
-* auto login user (with uid 1000)
+* auto login (user with uid 1000)
 * auto start X server
 * auto start IceWm
 * auto start rox
