@@ -25,7 +25,7 @@ Main line is:
 ExecStart=/usr/bin/systemctl start user@1000.service
 ```
 
-(can to replace 1000 to custom uid)
+(1000 can be replaced with a custom value)
 
 _uid_ can be seen by command:
 ```bash
