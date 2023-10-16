@@ -2,7 +2,7 @@
 
 This is systemd configs for able:
 * auto login
-* X server auto start
+* auto start X server
 * auto start IceWm
 * auto start rox
 * auto load X resources
