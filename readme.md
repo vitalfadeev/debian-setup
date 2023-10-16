@@ -1,10 +1,24 @@
-System configs in `src/etc`. Put it to `/etc'
 
-User configs in `src/home/1000`. Put it to home folder.
+# Install
 
-# System
+## Copy
 
-## Auto login
+* Copy system configs from `src/etc` in to `/etc'
+
+* Copy user configs from `src/home/1000` in to to home folder
+
+## Reload systemd
+
+```sh
+sudo systemctl daemon-reload
+systemctl --user daemon-reload
+```
+
+# Description
+
+## System
+
+### Auto login
 
 Auto login for user with uid 1000 
 (in Debian 12 first created user has uid 1000)
@@ -43,7 +57,7 @@ _uid_ can be seen by command:
 id
 ```
 
-## X server
+### X server
 
 Auto start X at computer startup
 
@@ -79,9 +93,9 @@ needs_root_rights=yes
 systemctl enable xorg.service
 ```
 
-# User 
+## User 
 
-## IceWM
+### IceWM
 
 ~/.config/systemd/user/icewm.service:
 
@@ -100,27 +114,8 @@ RestartSec=10
 WantedBy=default.target
 ```
 
-## X resources (colors, fonts, sizes)
 
-~/.config/systemd/user/xrdb.service:
-
-```ini
-[Unit]
-Description=X resource setting
-Documentation=man:xrdb(1)
-After=xorg.service autologin.service
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/xrdb -merge %h/.Xresources
-
-[Install]
-WantedBy=default.target
-```
-
-
-
-## ROX desktop
+### ROX desktop
 
 ~/.config/systemd/user/rox.service:
 
@@ -139,6 +134,25 @@ RestartSec=10
 [Install]
 WantedBy=default.target
 ```
+
+### X resources (colors, fonts, sizes)
+
+~/.config/systemd/user/xrdb.service:
+
+```ini
+[Unit]
+Description=X resource setting
+Documentation=man:xrdb(1)
+After=xorg.service autologin.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xrdb -merge %h/.Xresources
+
+[Install]
+WantedBy=default.target
+```
+
 
 ~/.Xresources:
 
