@@ -19,6 +19,11 @@ RestartSec=10
 WantedBy=graphical.target
 ```
 
+```bash
+systemctl enable autologin.service
+```
+
+
 Main line is:
 
 ```ini
@@ -32,3 +37,31 @@ _uid_ can be seen by command:
 id
 ```
 
+## X server
+
+Auto start X at computer startup
+
+/etc/systemd/system/xorg.service:
+
+```ini
+[Unit]
+Description=Xorg server
+After=plymouth-quit.service basic.target
+PartOf=graphical-session.target
+
+[Service]
+Environment=XDG_SESSION_TYPE=x11
+UnsetEnvironment=TERM
+StandardOutput=journal
+ExecStart=/usr/lib/xorg/Xorg.wrap -ac -s 0 -nolisten tcp :0 vt8
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=graphical.target
+Alias=display-manager.service
+```
+
+```bash
+systemctl enable xorg.service
+```
