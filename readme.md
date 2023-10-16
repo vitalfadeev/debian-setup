@@ -1,3 +1,5 @@
+# System
+
 ## Auto login
 
 Auto login for user with uid 1000 
@@ -64,4 +66,65 @@ Alias=display-manager.service
 
 ```bash
 systemctl enable xorg.service
+```
+
+# User 
+
+## IceWM
+
+~/.config/systemd/user/icewm.service:
+
+```ini
+[Unit]
+Description=IceWm
+After=xorg.service autologin.service
+
+[Service]
+ExecStart=/usr/bin/icewm-session  --nobg --notray
+Slice=session.slice
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+```
+
+## X resources (colors, fonts, sizes)
+
+~/.config/systemd/user/xrdb.service:
+
+```ini
+[Unit]
+Description=X resource setting
+Documentation=man:xrdb(1)
+After=xorg.service autologin.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/xrdb -merge %h/.Xresources
+
+[Install]
+WantedBy=default.target
+```
+
+
+
+## ROX desktop
+
+~/.config/systemd/user/rox.service:
+
+```ini
+[Unit]
+Description=ROX desktop
+After=xorg.service autologin.service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/rox -p Desktop
+Slice=session.slice
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
 ```
