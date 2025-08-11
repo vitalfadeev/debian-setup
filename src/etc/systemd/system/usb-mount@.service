@@ -1,0 +1,14 @@
+[Unit]
+Description=Mount USB Drive on %i
+[Service]
+Type=oneshot
+RemainAfterExit=true
+
+# usb-mount.sh
+#ExecStart=/usr/local/bin/usb-mount.sh add %i
+#ExecStop=/usr/local/bin/usb-mount.sh remove %i
+
+# udisksctl
+# udisksctl mount -b /dev/sda3
+ExecStart=/usr/bin/udisksctl mount -b /dev/%i
+ExecStop=/usr/bin/udisksctl unmount -b /dev/%i

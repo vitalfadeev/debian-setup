@@ -1,9 +1,10 @@
 [Unit]
 Description=IceWm
+Documentation=man:icewm
 After=xorg.service autologin.service
 
 [Service]
-ExecStart=/usr/bin/icewm-session  --nobg --notray
+ExecStart=/usr/bin/icewm
 Slice=session.slice
 Restart=always
 RestartSec=10

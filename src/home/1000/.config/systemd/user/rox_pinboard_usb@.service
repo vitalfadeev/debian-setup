@@ -1,0 +1,11 @@
+[Unit]
+Description=Add mountpoint on ROX pinboard: %i
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/usr/local/bin/rox-add-usb.sh %i
+ExecStop=/usr/local/bin/rox-remove-usb.sh %i
+
+[Install]
+WantedBy=usb-mount@.service

@@ -1,11 +1,11 @@
 [Unit]
 Description=X resource setting
 Documentation=man:xrdb(1)
-After=xorg.service autologin.service
+After=graphical-session.target
 
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/xrdb -merge %h/.Xresources
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target
